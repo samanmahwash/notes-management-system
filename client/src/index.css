@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-paper text-ink dark:bg-ink-dark dark:text-paper font-sans antialiased;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display;
+  }
+
+  ::selection {
+    @apply bg-gold/30;
+  }
+
+  *:focus-visible {
+    outline: 2px solid #C89B3C;
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-ink text-paper dark:bg-gold dark:text-ink-dark px-5 py-2.5 text-sm font-medium tracking-wide shadow-soft transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg active:translate-y-0 disabled:opacity-50 disabled:pointer-events-none;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-ink/15 dark:border-paper/20 px-5 py-2.5 text-sm font-medium text-ink dark:text-paper transition-colors duration-200 hover:bg-ink/5 dark:hover:bg-paper/10;
+  }
+
+  .card {
+    @apply bg-surface-light dark:bg-surface-dark rounded-card shadow-soft dark:shadow-soft-dark border border-ink/5 dark:border-paper/5;
+  }
+
+  .input-field {
+    @apply w-full rounded-xl border border-ink/15 dark:border-paper/15 bg-transparent px-4 py-2.5 text-sm placeholder:text-graphite/70 focus:border-gold focus:ring-2 focus:ring-gold/25 outline-none transition-colors;
+  }
+
+  .folded-corner {
+    position: relative;
+  }
+  .folded-corner::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 22px;
+    height: 22px;
+    background: linear-gradient(135deg, transparent 50%, rgba(200, 155, 60, 0.55) 50%);
+    border-bottom-left-radius: 6px;
+  }
+}
+
+.quill-editor .ql-toolbar {
+  @apply rounded-t-xl border-ink/10 dark:border-paper/15;
+}
+.quill-editor .ql-container {
+  @apply rounded-b-xl border-ink/10 dark:border-paper/15 font-sans text-base;
+  min-height: 240px;
+}
